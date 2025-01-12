@@ -1,0 +1,27 @@
+{% extends "nutrition/base.html" %}
+
+{% block title %}Авторизация{% endblock %}
+
+{% block content %}
+<h1 class='text-center'>Вход</h1>
+ <form method="post">
+    {% csrf_token %}
+    <form method="post">
+      {% csrf_token %}
+  
+      {% for field in form%}
+        <div class="form-group row justify-content-center text-center">
+           {{field.label_tag}}
+           <div class="col col-sm-10">
+              {{field}}
+           </div>
+        </div>
+      {% endfor %}
+      <div class="form-group row mt-2 justify-content-center text-center">
+        <div class="col col-sm-10">
+           <button type="submit" class="btn btn-primary">Войти</button>
+        </div>
+      </div>
+   </form>
+ </form>
+{% endblock %}

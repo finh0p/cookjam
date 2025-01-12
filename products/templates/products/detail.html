@@ -1,0 +1,362 @@
+{% extends "products/base.html"%}
+
+{% block title %}{{product.name}}{% endblock %}
+
+{% block content%}
+<div id="about-product" class="mx-auto">
+    <h1 class="text-center">{{product.name}}</h1>
+    <p>Содержание пищевых веществ в таблице приведено на 100 грамм продукта.</p>
+</div>
+{% if product.categories.all %}
+    <div id='categories'>
+        <h3>Категории:</h3>
+        <div class="row"> 
+            {% for category in product.categories.all %}
+                <div class="col-sm-6 mb-3 w-auto">
+                    <div class="card">
+                        <div class="card-body">
+                        {{ category.name }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+<div id="main-info" class="mx-auto">
+    <h3 class="text-center">Основная информация о продукте</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+              <th scope="col">Нутриент</th>
+              <th scope="col">Количество</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <th scope="row">Белки, г</th>
+                <td>{{ product.main_information.proteins }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Жиры, г</th>
+                <td>{{ product.main_information.fats }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Углеводы, г</th>
+                <td>{{ product.main_information.carbohydrates }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Ккал</th>
+                <td>{{ product.main_information.kcal }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Вода, г</th>
+                <td>{{ product.main_information.water }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Клетчатка, г</th>
+                <td>{{ product.main_information.fiber }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Крахмал, г</th>
+                <td>{{ product.main_information.starch }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Холестирин, мг</th>
+                <td>{{ product.main_information.cholesterol }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Транс-жиры, г</th>
+                <td>{{ product.main_information.trans_fats }}</td>
+            </tr>
+    </table>
+</div>
+<div id="diadet-info">
+    <h3 class="text-center">Гликемический и инсулиновый индексы</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+              <th scope="col">Индекс</th>
+              <th scope="col">Значение</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <th scope="row">Гликемический индекс</th>
+                <td>{{ product.diabetes_information.glycemic_index }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Инсулиновый индекс</th>
+                <td>{{ product.diabetes_information.insulin_index }}</td>
+            </tr>
+    </table>
+</div>
+<div id="acid-info">
+    <h3 class="text-center">Информация о содержании кислот</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+              <th scope="col">Нутриент</th>
+              <th scope="col">Количество</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <th scope="row">Триптофан, г</th>
+                <td>{{ product.acid_composition.tryptophan }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Треонин, г</th>
+                <td>{{ product.acid_composition.threonine }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Изолейцин, г</th>
+                <td>{{ product.acid_composition.isoleucine }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Лейцин, г</th>
+                <td>{{ product.acid_composition.leucine }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Лизин, г</th>
+                <td>{{ product.acid_composition.lysine }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Метионин, г</th>
+                <td>{{ product.acid_composition.methionine }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Цистеин, г</th>
+                <td>{{ product.acid_composition.cysteine }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Фенилаланин, г</th>
+                <td>{{ product.acid_composition.phenylalanine }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Тирозин, г</th>
+                <td>{{ product.acid_composition.tyrosine }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Валин, г</th>
+                <td>{{ product.acid_composition.valin }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Аргинин, г</th>
+                <td>{{ product.acid_composition.arginine }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Гистидин, г</th>
+                <td>{{ product.acid_composition.histidine }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Аланин, г</th>
+                <td>{{ product.acid_composition.alanin }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Аспарагиновая к-та, г</th>
+                <td>{{ product.acid_composition.aspartic_acid }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Глутаминовая к-та, г</th>
+                <td>{{ product.acid_composition.glutamic_acid }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Глицин, г</th>
+                <td>{{ product.acid_composition.glycine }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Пролин, г</th>
+                <td>{{ product.acid_composition.proline }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Серин, г</th>
+                <td>{{ product.acid_composition.serin }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Омега-3, г</th>
+                <td>{{ product.acid_composition.omega3 }}</td>
+            </tr>
+    </table>
+</div>
+<div id="microelements-info">
+    <h3 class="text-center">Микроэлементы</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+              <th scope="col">Нутриент</th>
+              <th scope="col">Количество</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <th scope="row">Кальций, мг</th>
+                <td>{{ product.microelements_information.ca }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Железо, мг</th>
+                <td>{{ product.microelements_information.fe }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Йод, мг</th>
+                <td>{{ product.microelements_information.i }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Магний, мг</th>
+                <td>{{ product.microelements_information.mg }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Фосфор, мг</th>
+                <td>{{ product.microelements_information.p }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Калий, мг</th>
+                <td>{{ product.microelements_information.k }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Натрий, мг</th>
+                <td>{{ product.microelements_information.na }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Цинк, мг</th>
+                <td>{{ product.microelements_information.zn }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Медь, мг</th>
+                <td>{{ product.microelements_information.cu }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Марганец, мг</th>
+                <td>{{ product.microelements_information.mn }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Селен, мкг</th>
+                <td>{{ product.microelements_information.se }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Фтор, мкг</th>
+                <td>{{ product.microelements_information.f }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Хром, мкг</th>
+                <td>{{ product.microelements_information.cr }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Кремний, мг</th>
+                <td>{{ product.microelements_information.si }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Хлор, мг</th>
+                <td>{{ product.microelements_information.cl }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Молибен, мкг</th>
+                <td>{{ product.microelements_information.mo }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Сера, мг</th>
+                <td>{{ product.microelements_information.s }}</td>
+            </tr>
+    </table>
+</div>
+<div id="vitemins-info">
+    <h3 class="text-center">Витамины</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+              <th scope="col">Витамин</th>
+              <th scope="col">Количество</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <th scope="row">A, мкг</th>
+                <td>{{ product.vitamins_information.vitamin_a }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Альфа-каротин, мкг</th>
+                <td>{{ product.vitamins_information.alpha_carotene }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Бета-каротин, мкг</th>
+                <td>{{ product.vitamins_information.beta_carotene }}</td>
+            </tr>
+            <tr>
+                <th scope="row">D, мкг</th>
+                <td>{{ product.vitamins_information.vitamin_d }}</td>
+            </tr>
+            <tr>
+                <th scope="row">E, мг</th>
+                <td>{{ product.vitamins_information.vitamin_e }}</td>
+            </tr>
+            <tr>
+                <th scope="row">K, мкг</th>
+                <td>{{ product.vitamins_information.vitamin_k }}</td>
+            </tr>
+            <tr>
+                <th scope="row">C, мг</th>
+                <td>{{ product.vitamins_information.vitamin_c }}</td>
+            </tr>
+            <tr>
+                <th scope="row">B1, мг</th>
+                <td>{{ product.vitamins_information.vitamin_b1 }}</td>
+            </tr>
+            <tr>
+                <th scope="row">B2, мг</th>
+                <td>{{ product.vitamins_information.vitamin_b2 }}</td>
+            </tr>
+            <tr>
+                <th scope="row">B3, мг</th>
+                <td>{{ product.vitamins_information.vitamin_b3 }}</td>
+            </tr>
+            <tr>
+                <th scope="row">B4, мг</th>
+                <td>{{ product.vitamins_information.vitamin_b4 }}</td>
+            </tr>
+            <tr>
+                <th scope="row">B5, мг</th>
+                <td>{{ product.vitamins_information.vitamin_b5 }}</td>
+            </tr>
+            <tr>
+                <th scope="row">B6, мг</th>
+                <td>{{ product.vitamins_information.vitamin_b6 }}</td>
+            </tr>
+            <tr>
+                <th scope="row">B7, мг</th>
+                <td>{{ product.vitamins_information.vitamin_b7 }}</td>
+            </tr>
+            <tr>
+                <th scope="row">B8, мг</th>
+                <td>{{ product.vitamins_information.vitamin_b8 }}</td>
+            </tr>
+            <tr>
+                <th scope="row">B9, мкг</th>
+                <td>{{ product.vitamins_information.vitamin_b9 }}</td>
+            </tr>
+            <tr>
+                <th scope="row">B11, мг</th>
+                <td>{{ product.vitamins_information.vitamin_b11 }}</td>
+            </tr>
+            <tr>
+                <th scope="row">B12, мкг</th>
+                <td>{{ product.vitamins_information.vitamin_b12 }}</td>
+            </tr>
+            <tr>
+                <th scope="row">B13, мг</th>
+                <td>{{ product.vitamins_information.vitamin_b13 }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Q10, мг</th>
+                <td>{{ product.vitamins_information.coenzyme_q10 }}</td>
+            </tr>
+            <tr>
+                <th scope="row">N, мг</th>
+                <td>{{ product.vitamins_information.vitamin_n }}</td>
+            </tr>
+            <tr>
+                <th scope="row">U, мг</th>
+                <td>{{ product.vitamins_information.vitamin_u }}</td>
+            </tr>
+    </table>
+</div>
+{% endblock%}

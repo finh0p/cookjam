@@ -1,0 +1,37 @@
+{% extends "dishes/base.html" %}
+
+{% block title%}{{ dish.name }}{% endblock %}
+
+{% block content %}
+    <h1 class="text-center">Рецепт блюда "{{ dish.name }}"</h1>
+    {% if request.user.is_authenticated %}
+        <div id="button-container">
+            <a href="" class="btn btn-success">+ Добавить в "съеденное"</a>
+        </div>
+    {% endif %}
+    <h3>Ингредиенты:</h3>
+    <table class="table" style="width: 400px;">
+        {% for ingredient in dish.products_in_this_dish.all %}
+        <tr>
+            <td>{{ ingredient.product }}</td>
+            <td>{{ ingredient.product_quantity }} {{ingredient.measure_unit}}</td>
+        </tr>
+        {% endfor%}
+    </table>
+    {% if dish.dish_types %}
+        <div id='categories'>
+            <h3>Категории:</h3>
+            <div class="row"> 
+                {% for category in dish.dish_types.all %}
+                    <div class="col-sm-6 mb-3 w-auto">
+                        <div class="card">
+                            <div class="card-body">
+                            {{ category.name }}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "products/base.html" %}
+
+{% block title %}Список продуктов{% endblock %}
+
+{% block content %}
+<h1>Продукты</h1>
+        <!-- Часть для списка продуктов -->
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                  <th scope="col">Наименование</th>
+                  <th scope="col">Белки, г</th>
+                  <th scope="col">Жиры, г</th>
+                  <th scope="col">У-ды, г</th>
+                  <th scope="col">Ккал</th>
+                  <th scope="col">ГИ</th>
+                  <th scope="col">ИИ</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for product in products %}
+                    <tr>
+                    <th scope="row"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url "products:product_detail" product.id %}">{{ product.name }}</a></th>
+                    <td>{{ product.main_information.proteins}}</td>
+                    <td>{{ product.main_information.fats}}</td>
+                    <td>{{ product.main_information.carbohydrates}}</td>
+                    <td>{{ product.main_information.kcal}}</td>
+                    <td>{{ product.diabetes_information.glycemic_index}}</td>
+                    <td>{{ product.diabetes_information.insulin_index}}</td>
+                    </tr>
+                {% endfor %}
+        </table>
+{% endblock %}
